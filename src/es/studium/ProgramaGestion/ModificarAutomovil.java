@@ -107,7 +107,7 @@ public class ModificarAutomovil implements WindowListener, ActionListener
 		{
 			String fecha[] = txtFecha.getText().split("/");
 			dlgMensaje.setLayout(new FlowLayout());
-			dlgMensaje.setSize(230,100);
+			dlgMensaje.setSize(250,100);
 			dlgMensaje.addWindowListener(this);
 			
 			if(txtModelo.getText().length()==0||txtFecha.getText().length()==0||txtPotencia.getText().length()==0||txtPrecio.getText().length()==0||txtTransmision.getText().length()==0||txtColor.getText().length()==0||txtMatricula.getText().length()==0)
@@ -117,6 +117,10 @@ public class ModificarAutomovil implements WindowListener, ActionListener
 			else if(txtMatricula.getText().length()!=8||txtPrecio.getText().length()>10)
 			{
 				lblMensaje.setText("La Matrícula o el Precio no son válidos");
+			}
+			else if(fecha[0].length()!=2||fecha[1].length()!=2||fecha[2].length()!=4)
+			{
+				lblMensaje.setText("La Fecha introducida no es válida");
 			}
 			else
 			{
