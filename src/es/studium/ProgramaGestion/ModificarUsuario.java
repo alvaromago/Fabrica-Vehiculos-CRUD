@@ -104,11 +104,14 @@ public class ModificarUsuario implements WindowListener, ActionListener
 				// Modificar
 				String sentencia = "update usuarios set nombreUsuario='"+txtNombre.getText()+"', claveUsuario = SHA2('"+txtClave.getText()+"', 256) where idUsuario = " + idUsuario + ";";
 				int respuesta = c.modificarUser(sentencia);
-				lblMensaje.setText("Modificación de Usuario Correcta");
 				if(respuesta!=0)
 				{
 					// Mostrar Mensaje Error
 					lblMensaje.setText("Error al Modificar");
+				}
+				else
+				{
+					lblMensaje.setText("Modificación de Usuario Correcta");
 				}
 			}
 			dlgMensaje.add(lblMensaje);

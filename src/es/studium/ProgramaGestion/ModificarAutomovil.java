@@ -128,6 +128,10 @@ public class ModificarAutomovil implements WindowListener, ActionListener
 					// Mostrar Mensaje Error
 					lblMensaje.setText("Error al Modificar");
 				}
+				else
+				{
+					lblMensaje.setText("Modificación de Automóvil Correcta");
+				}
 			}
 			
 			dlgMensaje.add(lblMensaje);

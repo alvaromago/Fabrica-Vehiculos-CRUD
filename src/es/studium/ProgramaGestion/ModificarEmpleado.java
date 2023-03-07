@@ -116,6 +116,10 @@ public class ModificarEmpleado implements WindowListener, ActionListener
 					// Mostrar Mensaje Error
 					lblMensaje.setText("Error al Modificar");
 				}
+				else
+				{
+					lblMensaje.setText("Modificación de Empleado Correcta");
+				}
 			}
 			
 			dlgMensaje.add(lblMensaje);
