@@ -80,7 +80,7 @@ public class NuevoAutomovil implements WindowListener, ActionListener
 			{
 				lblMensaje.setText("La Matrícula o el Precio no son válidos");
 			}
-			else if(tabla[0].length()!=1||tabla[1].length()!=1||tabla[2].length()!=1)
+			else if(tabla[0].length()!=2||tabla[1].length()!=2||tabla[2].length()!=4)
 			{
 				lblMensaje.setText("La Fecha introducida no es válida");
 			}

@@ -49,7 +49,7 @@ public class BajaAutomovil implements WindowListener, ActionListener
 			if (choAutomoviles.getSelectedIndex() != 0)
 			{
 				dlgSeguro.setLayout(new FlowLayout());
-				dlgSeguro.setSize(270,100);
+				dlgSeguro.setSize(320,100);
 				dlgSeguro.addWindowListener(this);
 				lblSeguro.setText("¿Seguro de eliminar al automóvil " + tabla[1] + "?");
 				dlgSeguro.add(lblSeguro);
