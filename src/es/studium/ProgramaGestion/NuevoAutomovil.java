@@ -80,6 +80,10 @@ public class NuevoAutomovil implements WindowListener, ActionListener
 			{
 				lblMensaje.setText("La Matrícula o el Precio no son válidos");
 			}
+			else if(tabla[0].length()!=1||tabla[1].length()!=1||tabla[2].length()!=1)
+			{
+				lblMensaje.setText("La Fecha introducida no es válida");
+			}
 			else
 			{
 				String sentencia = "insert into automoviles values (null, '" + tabla[2] + "-" + tabla[1] + "-" + tabla[0] + "', " + txtPotencia.getText() + ", '" + txtMatricula.getText() + "', " + txtPrecio.getText() + ", '" + txtTransmision.getText() + "', '" + txtColor.getText() + "', '" + txtModelo.getText() + "');";
