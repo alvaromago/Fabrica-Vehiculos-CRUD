@@ -384,4 +384,21 @@ public class Conexion
 		}
 		return resultado;
 	}
+
+	public int modificarAutomovil(String sentencia)
+	{
+		try
+		{
+			// Crear una sentencia
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			// Ejecutar la sentencia SQL
+			statement.executeUpdate(sentencia);
+			return 0;
+		}
+		catch (SQLException sqle)
+		{
+			System.out.println("Error 21-" + sqle.getMessage());
+			return 1;
+		}
+	}
 }

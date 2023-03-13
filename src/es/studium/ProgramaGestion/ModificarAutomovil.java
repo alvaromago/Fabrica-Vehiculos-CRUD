@@ -126,7 +126,7 @@ public class ModificarAutomovil implements WindowListener, ActionListener
 			{
 				// Modificar
 				String sentencia = "update automoviles set modeloAutomovil='" + txtModelo.getText() + "', fechaFabricacionAutomovil = '" + fecha[2] + "-" + fecha[1] + "-" + fecha[0] + "', potenciaAutomovil = '" + txtPotencia.getText() + "', precioAutomovil = '" + txtPrecio.getText() + "', transmisionAutomovil = '" + txtTransmision.getText() + "', colorAutomovil = '" + txtColor.getText() + "', matriculaAutomovil = '" + txtMatricula.getText() + "'  where idAutomovil = " + idAutomovil + ";";
-				int respuesta = c.modificarUser(sentencia);
+				int respuesta = c.modificarAutomovil(sentencia);
 				if(respuesta!=0)
 				{
 					// Mostrar Mensaje Error
