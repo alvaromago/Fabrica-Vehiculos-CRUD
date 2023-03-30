@@ -29,10 +29,13 @@ public class MenuPrincipal implements WindowListener, ActionListener
 	MenuItem mniListadoAutomovil = new MenuItem("Listado");
 	MenuItem mniBajaAutomovil = new MenuItem("Baja");
 	MenuItem mniModificarAutomovil = new MenuItem("Modificar");
+	Conexion c = new Conexion();
+	static String nusuario;
 	int tipoUsuario;
 	
-	MenuPrincipal(int t)
+	MenuPrincipal(String usuario, int t)
 	{
+		nusuario = usuario;
 		tipoUsuario = t;
 		v.setLayout(new FlowLayout());
 		v.setSize(350, 250);
@@ -145,6 +148,8 @@ public class MenuPrincipal implements WindowListener, ActionListener
 
 	public void windowClosing(WindowEvent e)
 	{
+		String salida = "Sale usuario '" + nusuario + "'";
+		c.apunteLog(nusuario, salida);
 		System.exit(0);
 	}
 	

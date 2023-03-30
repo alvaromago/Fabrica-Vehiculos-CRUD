@@ -2,11 +2,17 @@ package es.studium.ProgramaGestion;
 
 import java.awt.Choice;
 import java.awt.TextArea;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Conexion
 {
@@ -43,7 +49,7 @@ public class Conexion
 		}
 		return null;
 	}
-	
+
 	public int comprobarCredenciales(String u, String c)
 	{
 		String cadena = "select * from usuarios where nombreUsuario = '" + u + "' and claveUsuario = SHA2('" + c + "',256);";
@@ -54,6 +60,8 @@ public class Conexion
 			rs = statement.executeQuery(cadena);
 			if(rs.next())
 			{
+				String entrada = "Accede usuario '" + u + "'";
+				apunteLog(u, entrada);
 				return rs.getInt("tipoUsuario");
 			}
 			else
@@ -75,6 +83,7 @@ public class Conexion
 			// Creación de la sentencia
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			statement.executeUpdate(sentencia);
+			apunteLog(MenuPrincipal.nusuario, sentencia);
 			return 0;
 		}
 		catch (SQLException sqle)
@@ -91,6 +100,8 @@ public class Conexion
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = statement.executeQuery(sentencia);
+			String entrada = "Entra en el listado";
+			apunteLog(MenuPrincipal.nusuario, entrada);
 			while (resultado.next())
 			{
 				txaUsuarios.append(resultado.getString("idUsuario") + "  ");
@@ -131,6 +142,7 @@ public class Conexion
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			// Ejecutar la sentencia SQL
 			statement.executeUpdate(sentencia);
+			apunteLog(MenuPrincipal.nusuario, sentencia);
 			return 0;
 		}
 		catch (SQLException sqle)
@@ -147,6 +159,7 @@ public class Conexion
 			// Creación de la sentencia
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			statement.executeUpdate(sentencia);
+			apunteLog(MenuPrincipal.nusuario, sentencia);
 			return 0;
 		}
 		catch (SQLException sqle)
@@ -163,6 +176,7 @@ public class Conexion
 			// Creación de la sentencia
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			statement.executeUpdate(sentencia);
+			apunteLog(MenuPrincipal.nusuario, sentencia);
 			return 0;
 		}
 		catch (SQLException sqle)
@@ -179,6 +193,8 @@ public class Conexion
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = statement.executeQuery(sentencia);
+			String entrada = "Entra en el listado";
+			apunteLog(MenuPrincipal.nusuario, entrada);
 			while (resultado.next())
 			{
 				txaEmpleados.append(resultado.getString("idEmpleado") + "  ");
@@ -200,6 +216,8 @@ public class Conexion
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = statement.executeQuery(sentencia);
+			String entrada = "Entra en el listado";
+			apunteLog(MenuPrincipal.nusuario, entrada);
 			while (resultado.next())
 			{
 				txaAutomovil.append(resultado.getString("idAutomovil") + "  ");
@@ -242,6 +260,7 @@ public class Conexion
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			// Ejecutar la sentencia SQL
 			statement.executeUpdate(sentencia);
+			apunteLog(MenuPrincipal.nusuario, sentencia);
 			return 0;
 		}
 		catch (SQLException sqle)
@@ -279,6 +298,7 @@ public class Conexion
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			// Ejecutar la sentencia SQL
 			statement.executeUpdate(sentencia);
+			apunteLog(MenuPrincipal.nusuario, sentencia);
 			return 0;
 		}
 		catch (SQLException sqle)
@@ -317,6 +337,7 @@ public class Conexion
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			// Ejecutar la sentencia SQL
 			statement.executeUpdate(sentencia);
+			apunteLog(MenuPrincipal.nusuario, sentencia);
 			return 0;
 		}
 		catch (SQLException sqle)
@@ -355,6 +376,7 @@ public class Conexion
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			// Ejecutar la sentencia SQL
 			statement.executeUpdate(sentencia);
+			apunteLog(MenuPrincipal.nusuario, sentencia);
 			return 0;
 		}
 		catch (SQLException sqle)
@@ -393,12 +415,38 @@ public class Conexion
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			// Ejecutar la sentencia SQL
 			statement.executeUpdate(sentencia);
+			apunteLog(MenuPrincipal.nusuario, sentencia);
 			return 0;
 		}
 		catch (SQLException sqle)
 		{
 			System.out.println("Error 21-" + sqle.getMessage());
 			return 1;
+		}
+	}
+	
+	public void apunteLog(String usuario, String sentencia)
+	{	
+		Date fecha = new Date();
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String fechaFormateada = formato.format(fecha);
+		try
+		{
+			// Abrir el fichero
+			FileWriter fw = new FileWriter("historico.log", true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			PrintWriter salida = new PrintWriter(bw);
+			// Gestionar el fichero
+			salida.println("[" + fechaFormateada + "] [" + usuario + "] " + sentencia);
+			System.out.println("Información Almacenada");
+			// Cerrar el fichero
+			salida.close();
+			bw.close();
+			fw.close();
+		}
+		catch(IOException ioe)
+		{
+			System.out.println("Error en Fichero");
 		}
 	}
 }

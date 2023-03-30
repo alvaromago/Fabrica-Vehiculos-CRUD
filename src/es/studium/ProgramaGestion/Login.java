@@ -52,8 +52,9 @@ public class Login implements WindowListener, ActionListener
 			tipoUsuario = c.comprobarCredenciales(usuario, clave);
 			if(tipoUsuario!=-1)
 			{
-				new MenuPrincipal(tipoUsuario);
+				new MenuPrincipal(usuario, tipoUsuario);
 				login.setVisible(false);
+				
 			}
 			// Credenciales incorrectas
 			else
