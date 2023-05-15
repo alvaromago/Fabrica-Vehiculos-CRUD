@@ -36,7 +36,7 @@ public class Conexion
 		{
 			// Cargar los controladores para el acceso a la BD
 			Class.forName(driver);
-			// Establecer la conexión con la BD
+			// Establecer la conexiÃ³n con la BD
 			return(DriverManager.getConnection(url, login, password));
 		}
 		catch (ClassNotFoundException cnfe)
@@ -80,7 +80,7 @@ public class Conexion
 	{
 		try
 		{
-			// Creación de la sentencia
+			// CreaciÃ³n de la sentencia
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			statement.executeUpdate(sentencia);
 			apunteLog(MenuPrincipal.nusuario, sentencia);
@@ -104,7 +104,7 @@ public class Conexion
 			apunteLog(MenuPrincipal.nusuario, entrada);
 			while (resultado.next())
 			{
-				txaUsuarios.append(resultado.getString("idUsuario") + "  ");
+				txaUsuarios.append(resultado.getString("idUsuario") + " - ");
 				txaUsuarios.append(resultado.getString("nombreUsuario") + "\n");
 			}
 		}
@@ -156,7 +156,7 @@ public class Conexion
 	{
 		try
 		{
-			// Creación de la sentencia
+			// CreaciÃ³n de la sentencia
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			statement.executeUpdate(sentencia);
 			apunteLog(MenuPrincipal.nusuario, sentencia);
@@ -173,7 +173,7 @@ public class Conexion
 	{
 		try
 		{
-			// Creación de la sentencia
+			// CreaciÃ³n de la sentencia
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			statement.executeUpdate(sentencia);
 			apunteLog(MenuPrincipal.nusuario, sentencia);
@@ -197,9 +197,9 @@ public class Conexion
 			apunteLog(MenuPrincipal.nusuario, entrada);
 			while (resultado.next())
 			{
-				txaEmpleados.append(resultado.getString("idEmpleado") + "  ");
-				txaEmpleados.append(resultado.getString("nombreEmpleado") + "  ");
-				txaEmpleados.append(resultado.getString("apellidosEmpleado") + "  ");
+				txaEmpleados.append(resultado.getString("idEmpleado") + " - ");
+				txaEmpleados.append(resultado.getString("nombreEmpleado") + " - ");
+				txaEmpleados.append(resultado.getString("apellidosEmpleado") + " - ");
 				txaEmpleados.append(resultado.getString("correoElectronicoEmpleado") + "\n");
 			}
 		}
@@ -220,9 +220,9 @@ public class Conexion
 			apunteLog(MenuPrincipal.nusuario, entrada);
 			while (resultado.next())
 			{
-				txaAutomovil.append(resultado.getString("idAutomovil") + "  ");
-				txaAutomovil.append(resultado.getString("modeloAutomovil") + "  ");
-				txaAutomovil.append(resultado.getString("precioAutomovil") + "$  ");
+				txaAutomovil.append(resultado.getString("idAutomovil") + " - ");
+				txaAutomovil.append(resultado.getString("modeloAutomovil") + " - ");
+				txaAutomovil.append(resultado.getString("precioAutomovil") + " â‚¬ - ");
 				txaAutomovil.append(resultado.getString("potenciaAutomovil") + " CV" + "\n");
 			}
 		}
@@ -277,7 +277,7 @@ public class Conexion
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet resultado = statement.executeQuery(sentencia);
-			choAutomoviles.add("Elige un automóvil...");
+			choAutomoviles.add("Elige un automÃ³vil...");
 			while (resultado.next())
 			{
 				choAutomoviles.add(resultado.getString("idAutomovil") + "-" + resultado.getString("modeloAutomovil"));
@@ -438,7 +438,7 @@ public class Conexion
 			PrintWriter salida = new PrintWriter(bw);
 			// Gestionar el fichero
 			salida.println("[" + fechaFormateada + "] [" + usuario + "] " + sentencia);
-			System.out.println("Información Almacenada");
+			System.out.println("InformaciÃ³n Almacenada");
 			// Cerrar el fichero
 			salida.close();
 			bw.close();
