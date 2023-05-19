@@ -11,6 +11,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
+
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
@@ -22,23 +23,24 @@ import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.properties.UnitValue;
 
-public class ListadoUsuario implements WindowListener, ActionListener
+public class ListadoTrabajo implements WindowListener, ActionListener
 {
-	Frame f = new Frame("Listado Usuarios");
-	TextArea txaUsuarios = new TextArea(6, 20);
+	Frame f = new Frame("Listado Trabajos");
+	TextArea txaTrabajos = new TextArea(6, 35);
 	Button btnPdf = new Button("Exportar a PDF");
 	Conexion c = new Conexion();
-		
-	ListadoUsuario()
+	
+	ListadoTrabajo()
 	{
-		f.setSize(210, 200);
+		f.setSize(300, 200);
 		f.setLayout(new FlowLayout());
 		f.addWindowListener(this);
-		c.rellenarListadoUsuario(txaUsuarios);
-		f.add(txaUsuarios);
-		txaUsuarios.setEditable(false);
-		f.add(btnPdf);
+		// Rellenar textarea
+		
+		f.add(txaTrabajos);
+		txaTrabajos.setEditable(false);
 		btnPdf.addActionListener(this);
+		f.add(btnPdf);
 		f.setResizable(false);
 		f.setLocationRelativeTo(null);
 		f.setVisible(true);
@@ -48,8 +50,8 @@ public class ListadoUsuario implements WindowListener, ActionListener
 	{
 		if(e.getSource().equals(btnPdf))
 		{
-			String dest = "ListadoUsuarios.pdf";
-
+			String dest = "ListadoTrabajos.pdf";
+			
 			try
 			{
 				// Inicializar PDF writer
@@ -69,15 +71,16 @@ public class ListadoUsuario implements WindowListener, ActionListener
 
 				// Crear tabla y configurar anchos de columna
 				Table table = new Table(UnitValue.createPercentArray(new float[]
-				{ 1, 1 }));
+				{ 1, 1, 1 }));
 				table.setWidth(UnitValue.createPercentValue(100));
 
 				// Agregar encabezados a la tabla
 				table.addHeaderCell(new Cell().add(new Paragraph("ID").setFont(fontHeader).setBold()));
-				table.addHeaderCell(new Cell().add(new Paragraph("Nombre").setFont(fontHeader).setBold()));
+				table.addHeaderCell(new Cell().add(new Paragraph("Empleado").setFont(fontHeader).setBold()));
+				table.addHeaderCell(new Cell().add(new Paragraph("Automóvil").setFont(fontHeader).setBold()));
 
 				// Agregar datos a la tabla desde el TextArea
-				String[] lines = txaUsuarios.getText().split("\n");
+				String[] lines = txaTrabajos.getText().split("\n");
 				for (String line : lines)
 				{
 					String[] data = line.split(" - ");
@@ -102,12 +105,12 @@ public class ListadoUsuario implements WindowListener, ActionListener
 		}
 	}
 
-	public void windowOpened(WindowEvent e){}
-
 	public void windowClosing(WindowEvent e)
 	{
 		f.setVisible(false);
 	}
+	
+	public void windowOpened(WindowEvent e){}
 
 	public void windowClosed(WindowEvent e){}
 

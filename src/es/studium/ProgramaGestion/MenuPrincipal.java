@@ -29,6 +29,9 @@ public class MenuPrincipal implements WindowListener, ActionListener
 	MenuItem mniListadoAutomovil = new MenuItem("Listado");
 	MenuItem mniBajaAutomovil = new MenuItem("Baja");
 	MenuItem mniModificarAutomovil = new MenuItem("Modificar");
+	Menu mnuTrabajos = new Menu("Trabajos");
+	MenuItem mniNuevoTrabajo = new MenuItem("Nuevo");
+	MenuItem mniListadoTrabajo = new MenuItem("Listado");
 	Conexion c = new Conexion();
 	static String nusuario;
 	int tipoUsuario;
@@ -73,9 +76,14 @@ public class MenuPrincipal implements WindowListener, ActionListener
 			mnuAutomoviles.add(mniBajaAutomovil);
 			mnuAutomoviles.add(mniModificarAutomovil);
 		}
+		mniNuevoTrabajo.addActionListener(this);
+		mniListadoTrabajo.addActionListener(this);
+		mnuTrabajos.add(mniNuevoTrabajo);
+		mnuTrabajos.add(mniListadoTrabajo);
 		menuBar.add(mnuUsuarios);
 		menuBar.add(mnuEmpleados);
 		menuBar.add(mnuAutomoviles);
+		menuBar.add(mnuTrabajos);
 		v.setMenuBar(menuBar);
 		v.setLocationRelativeTo(null);
 		v.setResizable(false);
@@ -143,6 +151,15 @@ public class MenuPrincipal implements WindowListener, ActionListener
 		else if(e.getSource().equals(mniModificarAutomovil))
 		{
 			new ModificarAutomovil();
+		}
+		// Registrar nuevo trabajo
+		else if(e.getSource().equals(mniNuevoTrabajo))
+		{
+			new NuevoTrabajo();
+		}
+		else if(e.getSource().equals(mniListadoTrabajo))
+		{
+			new ListadoTrabajo();
 		}
 	}
 
