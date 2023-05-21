@@ -36,7 +36,7 @@ public class ListadoTrabajo implements WindowListener, ActionListener
 		f.setLayout(new FlowLayout());
 		f.addWindowListener(this);
 		// Rellenar textarea
-		
+		c.rellenarListadoTrabajo(txaTrabajos);
 		f.add(txaTrabajos);
 		txaTrabajos.setEditable(false);
 		btnPdf.addActionListener(this);

@@ -2,6 +2,7 @@ package es.studium.ProgramaGestion;
 
 import java.awt.Button;
 import java.awt.Choice;
+import java.awt.Dialog;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.Label;
@@ -13,6 +14,8 @@ import java.awt.event.WindowListener;
 public class NuevoTrabajo implements WindowListener, ActionListener
 {
 	Frame f = new Frame("Nuevo Trabajo");
+	Dialog dlgMensaje = new Dialog(f, "Mensaje", true);
+	Label lblMensaje = new Label("Alta de Trabajo Correcta");
 	Label lblAlta = new Label(" - Nuevo Trabajo -");
 	Label lblEmpleado = new Label("Elige el empleado:");
 	Label lblAutomovil = new Label("Elige el automóvil:");
@@ -49,10 +52,32 @@ public class NuevoTrabajo implements WindowListener, ActionListener
 	{
 		if(e.getSource().equals(btnAceptar))
 		{
-			if(choEmpleados.getSelectedIndex()!=0)
+			dlgMensaje.setSize(225, 100);
+			dlgMensaje.setLayout(new FlowLayout());
+			dlgMensaje.addWindowListener(this);
+			if(choEmpleados.getSelectedIndex()==0 || choAutomoviles.getSelectedIndex()==0)
 			{
-				
+				lblMensaje.setText("Por favor seleccione los dos campos");
 			}
+			else
+			{
+				// Registrar trabajo
+				String sentencia = "";
+				int respuesta = c.altaTrabajo(sentencia);
+				if(respuesta!=0)
+				{
+					// Mensaje de error
+					lblMensaje.setText("Ha ocurrido un error");
+				}
+				else
+				{
+					lblMensaje.setText("Alta de Trabajo Correcta");
+				}
+			}
+			dlgMensaje.add(lblMensaje);
+			dlgMensaje.setResizable(false);
+			dlgMensaje.setLocationRelativeTo(null);
+			dlgMensaje.setVisible(true);
 		}
 		else if(e.getSource().equals(btnCancelar))
 		{
@@ -62,7 +87,14 @@ public class NuevoTrabajo implements WindowListener, ActionListener
 
 	public void windowClosing(WindowEvent e)
 	{
-		f.setVisible(false);
+		if(dlgMensaje.isActive())
+		{
+			dlgMensaje.setVisible(false);
+		}
+		else
+		{			
+			f.setVisible(false);
+		}
 	}
 	
 	public void windowOpened(WindowEvent e){}

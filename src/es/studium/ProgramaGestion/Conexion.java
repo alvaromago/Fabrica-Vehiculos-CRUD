@@ -449,4 +449,43 @@ public class Conexion
 			System.out.println("Error en Fichero");
 		}
 	}
+
+	public int altaTrabajo(String sentencia)
+	{
+		try
+		{
+			// Creación de la sentencia
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			statement.executeUpdate(sentencia);
+			apunteLog(MenuPrincipal.nusuario, sentencia);
+			return 0;
+		}
+		catch (SQLException sqle)
+		{
+			System.out.println("Error 22-" + sqle.getMessage());
+			return 1;
+		}
+	}
+
+	public void rellenarListadoTrabajo(TextArea txaTrabajos)
+	{
+		String sentencia = "";
+		try
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet resultado = statement.executeQuery(sentencia);
+			String entrada = "Entra en el listado";
+			apunteLog(MenuPrincipal.nusuario, entrada);
+			while (resultado.next())
+			{
+				txaTrabajos.append(resultado.getString("idHace") + " - ");
+				txaTrabajos.append(resultado.getString("idEmpleadoFK") + " - ");
+				txaTrabajos.append(resultado.getString("idAutomovilFK") + "\n");
+			}
+		}
+		catch (SQLException sqle)
+		{
+			System.out.println("Error 23-" + sqle.getMessage());
+		}
+	}
 }
