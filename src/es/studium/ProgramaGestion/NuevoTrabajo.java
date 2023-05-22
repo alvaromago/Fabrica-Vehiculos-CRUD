@@ -18,7 +18,7 @@ public class NuevoTrabajo implements WindowListener, ActionListener
 	Label lblMensaje = new Label("Alta de Trabajo Correcta");
 	Label lblAlta = new Label(" - Nuevo Trabajo -");
 	Label lblEmpleado = new Label("Elige el empleado:");
-	Label lblAutomovil = new Label("Elige el automóvil:");
+	Label lblAutomovil = new Label("Elige el automï¿½vil:");
 	Choice choEmpleados = new Choice();
 	Choice choAutomoviles = new Choice();
 	Button btnAceptar = new Button("Aceptar");
@@ -62,7 +62,11 @@ public class NuevoTrabajo implements WindowListener, ActionListener
 			else
 			{
 				// Registrar trabajo
-				String sentencia = "";
+				String Empleado[] = choEmpleados.getSelectedItem().split("-");
+				int idEmpleado = Integer.parseInt(Empleado[0]);
+				String Automovil[] = choAutomoviles.getSelectedItem().split("-");
+				int idAutomovil = Integer.parseInt(Automovil[0]);
+				String sentencia = "insert into hace values (null, " + idEmpleado + ", " + idAutomovil + ");";
 				int respuesta = c.altaTrabajo(sentencia);
 				if(respuesta!=0)
 				{

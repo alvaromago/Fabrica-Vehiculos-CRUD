@@ -1,6 +1,7 @@
 package es.studium.ProgramaGestion;
 
 import java.awt.Button;
+import java.awt.Desktop;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.TextArea;
@@ -10,18 +11,16 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
+
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.properties.UnitValue;
-
-import java.awt.Desktop;
 
 public class ListadoAutomovil implements WindowListener, ActionListener
 {

@@ -469,7 +469,7 @@ public class Conexion
 
 	public void rellenarListadoTrabajo(TextArea txaTrabajos)
 	{
-		String sentencia = "";
+		String sentencia = "select idHace, idEmpleadoFK, idAutomovilFK from hace join empleado on hace.idEmpleadoFK = empleado.idEmpleado join automoviles on hace.idAutomovilFK = automoviles.idAutomovil;";
 		try
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
