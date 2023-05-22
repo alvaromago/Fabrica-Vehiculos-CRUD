@@ -66,7 +66,7 @@ public class NuevoTrabajo implements WindowListener, ActionListener
 				int idEmpleado = Integer.parseInt(Empleado[0]);
 				String Automovil[] = choAutomoviles.getSelectedItem().split("-");
 				int idAutomovil = Integer.parseInt(Automovil[0]);
-				String sentencia = "insert into hace values (null, " + idEmpleado + ", " + idAutomovil + ");";
+				String sentencia = "insert into hace values (null, " + idAutomovil + ", " + idEmpleado + ");";
 				int respuesta = c.altaTrabajo(sentencia);
 				if(respuesta!=0)
 				{

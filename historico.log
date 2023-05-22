@@ -155,3 +155,21 @@
 [21/05/2023 16:24:00] [admin] Sale usuario 'admin'
 [21/05/2023 16:24:17] [admin] Accede usuario 'admin'
 [21/05/2023 16:25:23] [admin] Sale usuario 'admin'
+[22/05/2023 15:02:53] [admin] Accede usuario 'admin'
+[22/05/2023 15:06:28] [admin] Sale usuario 'admin'
+[22/05/2023 15:06:32] [admin] Accede usuario 'admin'
+[22/05/2023 15:06:45] [admin] Sale usuario 'admin'
+[22/05/2023 15:13:21] [admin] Accede usuario 'admin'
+[22/05/2023 15:13:22] [admin] Entra en el listado
+[22/05/2023 15:13:27] [admin] Sale usuario 'admin'
+[22/05/2023 15:21:48] [admin] Accede usuario 'admin'
+[22/05/2023 15:22:10] [admin] Sale usuario 'admin'
+[22/05/2023 16:14:22] [admin] Accede usuario 'admin'
+[22/05/2023 16:14:40] [admin] Sale usuario 'admin'
+[22/05/2023 16:16:19] [admin] Accede usuario 'admin'
+[22/05/2023 16:16:25] [admin] insert into hace values (null, 4, 3);
+[22/05/2023 16:16:27] [admin] Sale usuario 'admin'
+[22/05/2023 16:16:39] [admin] Accede usuario 'admin'
+[22/05/2023 16:17:07] [admin] Entra en el listado
+[22/05/2023 16:17:11] [admin] Entra en el listado
+[22/05/2023 16:17:24] [admin] Sale usuario 'admin'
