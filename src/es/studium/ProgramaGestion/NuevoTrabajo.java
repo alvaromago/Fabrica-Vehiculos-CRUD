@@ -18,7 +18,7 @@ public class NuevoTrabajo implements WindowListener, ActionListener
 	Label lblMensaje = new Label("Alta de Trabajo Correcta");
 	Label lblAlta = new Label(" - Nuevo Trabajo -");
 	Label lblEmpleado = new Label("Elige el empleado:");
-	Label lblAutomovil = new Label("Elige el automï¿½vil:");
+	Label lblAutomovil = new Label("Elige el automóvil:");
 	Choice choEmpleados = new Choice();
 	Choice choAutomoviles = new Choice();
 	Button btnAceptar = new Button("Aceptar");

@@ -1,0 +1,30 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaProgramaGestion.chm
+Contents file=Table of Contents.hhc
+Default topic=BajaAutomovil.html
+Display compile progress=No
+Language=0xc0a Español (España, internacional)
+
+
+[FILES]
+BajaAutomovil.html
+BajaEmpleado.html
+BajaUsuario.html
+Indice.html
+ListadoAutomovil.html
+ListadoEmpleado.html
+ListadoTrabajo.html
+ListadoUsuario.html
+Login.html
+MenuPrincipal.html
+ModificacionAutomovil.html
+ModificacionEmpleado.html
+ModificacionUsuario.html
+NuevoAutomovil.html
+NuevoEmpleado.html
+NuevoTrabajo.html
+NuevoUsuario.html
+
+[INFOTYPES]
+

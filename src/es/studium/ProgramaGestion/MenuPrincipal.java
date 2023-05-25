@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 
 public class MenuPrincipal implements WindowListener, ActionListener
 {
@@ -32,6 +33,8 @@ public class MenuPrincipal implements WindowListener, ActionListener
 	Menu mnuTrabajos = new Menu("Trabajos");
 	MenuItem mniNuevoTrabajo = new MenuItem("Nuevo");
 	MenuItem mniListadoTrabajo = new MenuItem("Listado");
+	Menu mnuAyuda = new Menu("Ayuda");
+	MenuItem mniAyuda = new MenuItem("Ayuda");
 	Conexion c = new Conexion();
 	static String nusuario;
 	int tipoUsuario;
@@ -41,7 +44,7 @@ public class MenuPrincipal implements WindowListener, ActionListener
 		nusuario = usuario;
 		tipoUsuario = t;
 		v.setLayout(new FlowLayout());
-		v.setSize(350, 250);
+		v.setSize(400, 250);
 		v.addWindowListener(this);
 		mniNuevoUsuario.addActionListener(this);
 		mniListadoUsuario.addActionListener(this);
@@ -79,11 +82,17 @@ public class MenuPrincipal implements WindowListener, ActionListener
 		mniNuevoTrabajo.addActionListener(this);
 		mniListadoTrabajo.addActionListener(this);
 		mnuTrabajos.add(mniNuevoTrabajo);
-		mnuTrabajos.add(mniListadoTrabajo);
+		if(tipoUsuario==0)
+		{			
+			mnuTrabajos.add(mniListadoTrabajo);
+		}
+		mniAyuda.addActionListener(this);
+		mnuAyuda.add(mniAyuda);
 		menuBar.add(mnuUsuarios);
 		menuBar.add(mnuEmpleados);
 		menuBar.add(mnuAutomoviles);
 		menuBar.add(mnuTrabajos);
+		menuBar.add(mnuAyuda);
 		v.setMenuBar(menuBar);
 		v.setLocationRelativeTo(null);
 		v.setResizable(false);
@@ -160,6 +169,20 @@ public class MenuPrincipal implements WindowListener, ActionListener
 		else if(e.getSource().equals(mniListadoTrabajo))
 		{
 			new ListadoTrabajo();
+		}
+		else if(e.getSource().equals(mniAyuda))
+		{
+			try
+			{
+				Runtime.getRuntime().exec("hh.exe AyudaProgramaGestion.chm");
+				String sentencia = "Entra en ayuda '" + nusuario + "'";
+				c.apunteLog(nusuario, sentencia);
+			}
+			catch (IOException er)
+			{
+				er.printStackTrace();
+			}
+
 		}
 	}
 
