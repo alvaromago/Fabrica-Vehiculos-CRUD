@@ -469,7 +469,7 @@ public class Conexion
 
 	public void rellenarListadoTrabajo(TextArea txaTrabajos)
 	{
-		String sentencia = "select idHace, idEmpleadoFK, idAutomovilFK from hace join empleado on hace.idEmpleadoFK = empleado.idEmpleado join automoviles on hace.idAutomovilFK = automoviles.idAutomovil;";
+		String sentencia = "select idHace, nombreEmpleado, modeloAutomovil from hace join empleado on hace.idEmpleadoFK = empleado.idEmpleado join automoviles on hace.idAutomovilFK = automoviles.idAutomovil;";
 		try
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -479,8 +479,8 @@ public class Conexion
 			while (resultado.next())
 			{
 				txaTrabajos.append(resultado.getString("idHace") + " - ");
-				txaTrabajos.append(resultado.getString("idEmpleadoFK") + " - ");
-				txaTrabajos.append(resultado.getString("idAutomovilFK") + "\n");
+				txaTrabajos.append(resultado.getString("nombreEmpleado") + " - ");
+				txaTrabajos.append(resultado.getString("modeloAutomovil") + "\n");
 			}
 		}
 		catch (SQLException sqle)
