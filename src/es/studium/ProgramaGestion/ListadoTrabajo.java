@@ -67,31 +67,32 @@ public class ListadoTrabajo implements WindowListener, ActionListener
 				PdfFont fontHeader = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
 
 				// Crear fuente para los datos
-				PdfFont fontData = PdfFontFactory.createFont(StandardFonts.HELVETICA);
+				PdfFont fontDatos = PdfFontFactory.createFont(StandardFonts.HELVETICA);
 
 				// Crear tabla y configurar anchos de columna
-				Table table = new Table(UnitValue.createPercentArray(new float[]
-				{ 1, 1, 1 }));
-				table.setWidth(UnitValue.createPercentValue(100));
+				Table tabla = new Table(UnitValue.createPercentArray(new float[]
+				{ 1, 1, 1, 1}));
+				tabla.setWidth(UnitValue.createPercentValue(100));
 
 				// Agregar encabezados a la tabla
-				table.addHeaderCell(new Cell().add(new Paragraph("ID").setFont(fontHeader).setBold()));
-				table.addHeaderCell(new Cell().add(new Paragraph("Empleado").setFont(fontHeader).setBold()));
-				table.addHeaderCell(new Cell().add(new Paragraph("Automóvil").setFont(fontHeader).setBold()));
+				tabla.addHeaderCell(new Cell().add(new Paragraph("ID").setFont(fontHeader).setBold()));
+				tabla.addHeaderCell(new Cell().add(new Paragraph("Empleado").setFont(fontHeader).setBold()));
+				tabla.addHeaderCell(new Cell().add(new Paragraph("DNI").setFont(fontHeader).setBold()));
+				tabla.addHeaderCell(new Cell().add(new Paragraph("Automóvil").setFont(fontHeader).setBold()));
 
 				// Agregar datos a la tabla desde el TextArea
-				String[] lines = txaTrabajos.getText().split("\n");
-				for (String line : lines)
+				String[] lineas = txaTrabajos.getText().split("\n");
+				for (String linea : lineas)
 				{
-					String[] data = line.split(" - ");
-					for (String item : data)
+					String[] datos = linea.split(" - ");
+					for (String dato : datos)
 					{
-						table.addCell(new Cell().add(new Paragraph(item).setFont(fontData)));
+						tabla.addCell(new Cell().add(new Paragraph(dato).setFont(fontDatos)));
 					}
 				}
 
 				// Agregar la tabla al documento
-				document.add(table);
+				document.add(tabla);
 
 				// Cerrar documento
 				document.close();
