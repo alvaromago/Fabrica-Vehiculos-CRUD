@@ -95,7 +95,7 @@ public class Conexion
 
 	public void rellenarListadoUsuario(TextArea txaUsuarios)
 	{
-		String sentencia = "select idUsuario, nombreUsuario from usuarios;";
+		String sentencia = "select idUsuario, nombreUsuario from usuarios order by 1;";
 		try
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);

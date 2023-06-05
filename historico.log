@@ -244,3 +244,45 @@
 [28/05/2023 18:34:02] [admin] Accede usuario 'admin'
 [28/05/2023 18:37:17] [admin] Entra en ayuda 'admin'
 [28/05/2023 18:47:48] [admin] Sale usuario 'admin'
+[05/06/2023 11:45:45] [admin] Accede usuario 'admin'
+[05/06/2023 11:45:53] [admin] Entra en el listado
+[05/06/2023 11:45:57] [admin] Entra en el listado
+[05/06/2023 11:46:01] [admin] Entra en el listado
+[05/06/2023 11:46:04] [admin] Entra en el listado
+[05/06/2023 11:46:06] [admin] Entra en ayuda 'admin'
+[05/06/2023 11:46:16] [admin] Sale usuario 'admin'
+[05/06/2023 11:46:35] [admin] Accede usuario 'admin'
+[05/06/2023 11:46:58] [admin] insert into usuarios values (null, 'Fernando', SHA2('fernando', 256), 1);
+[05/06/2023 11:47:01] [admin] Entra en el listado
+[05/06/2023 11:48:06] [admin] insert into empleado values (null, 'Claudia', '654834501', '12345678Z', 'claudia98@gmail.com', 'Palazón Gómez');
+[05/06/2023 11:49:00] [admin] insert into empleado values (null, 'Miguel', '843859394', '29582855D', 'myketowers@gmail.com', 'Torres');
+[05/06/2023 11:49:03] [admin] Entra en el listado
+[05/06/2023 11:49:13] [admin] Entra en el listado
+[05/06/2023 11:51:26] [admin] insert into automoviles values (null, '2023-05-14', 500, '3562 LXG', 200000, 'Automático', 'Negro', 'Aston Martin');
+[05/06/2023 11:53:21] [admin] insert into automoviles values (null, '2023-01-23', 150, '1254 MDM', 45000, 'Automático', 'Marrón', 'Audi A3');
+[05/06/2023 11:53:33] [admin] Entra en el listado
+[05/06/2023 11:53:52] [admin] Entra en el listado
+[05/06/2023 11:53:55] [admin] Entra en el listado
+[05/06/2023 11:54:05] [admin] Entra en el listado
+[05/06/2023 11:55:05] [admin] insert into empleado values (null, 'Álvaro', '678996644', '29553992G', 'aalvaromago@gmail.com', 'Martín González');
+[05/06/2023 11:55:15] [admin] insert into hace values (null, 2, 3);
+[05/06/2023 11:57:14] [admin] insert into automoviles values (null, '2022-09-30', 90, '6746 MBC', 35000, 'Automático', 'Azul', 'Cupra Formentor');
+[05/06/2023 11:57:19] [admin] Entra en el listado
+[05/06/2023 11:57:28] [admin] insert into hace values (null, 4, 1);
+[05/06/2023 11:57:37] [admin] Entra en el listado
+[05/06/2023 11:57:53] [admin] Entra en el listado
+[05/06/2023 11:57:55] [admin] Entra en el listado
+[05/06/2023 11:57:58] [admin] Entra en el listado
+[05/06/2023 11:58:05] [admin] Entra en el listado
+[05/06/2023 11:58:12] [admin] insert into hace values (null, 3, 3);
+[05/06/2023 11:58:15] [admin] Entra en el listado
+[05/06/2023 11:58:41] [admin] update automoviles set modeloAutomovil='Aston Martin Vantage', fechaFabricacionAutomovil = '2023-05-14', potenciaAutomovil = '500', precioAutomovil = '200000.00', transmisionAutomovil = 'Automático', colorAutomovil = 'Negro', matriculaAutomovil = '3562 LXG'  where idAutomovil = 2;
+[05/06/2023 11:58:45] [admin] Entra en el listado
+[05/06/2023 11:58:51] [admin] Sale usuario 'admin'
+[05/06/2023 12:42:34] [admin] Accede usuario 'admin'
+[05/06/2023 12:42:36] [admin] Entra en el listado
+[05/06/2023 12:43:37] [admin] Entra en el listado
+[05/06/2023 12:44:11] [admin] Sale usuario 'admin'
+[05/06/2023 12:45:02] [admin] Accede usuario 'admin'
+[05/06/2023 12:45:04] [admin] Entra en el listado
+[05/06/2023 12:45:17] [admin] Sale usuario 'admin'
